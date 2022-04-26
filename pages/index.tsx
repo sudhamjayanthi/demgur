@@ -12,6 +12,12 @@ import { Web3Storage } from 'web3.storage'
 const client = new Web3Storage({ token: process.env.WEB3STORAGE_TOKEN })
 
 const imageFromUrl = (url: string) => {
+  // image url regex
+  const imageUrlRegex = /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|svg))$/
+  if (!url.match(imageUrlRegex)) {
+    console.log("invalid url!")
+    return;
+  } 
   return fetch(url)
     .then((res) => res.blob())
     .then(
@@ -28,14 +34,17 @@ const imageFromUrl = (url: string) => {
 const Home: NextPage = () => {
   const router = useRouter()
   const [imageURL, setImageURL] = useState('')
+  const [disabled, setDisabled] = useState(false)
 
   const handleChange = async (file: File) => {
+    setDisabled(true)
     try {
       const cid = await client.put([file])
       console.log('uploading image with cid:', cid)
       router.push(`/success/${cid}/${encodeURIComponent(file.name)}`)
     } catch (error) {
       console.error('error occured while uploading image to ipfs : ', error)
+      setDisabled(false)
     }
   }
 
@@ -61,13 +70,16 @@ const Home: NextPage = () => {
             hoverTitle={'Drop here'}
             label={'hello world'}
             types={['JPG', 'PNG']}
+            disabled={disabled}
           >
-            <div className="cursor-pointer rounded-md border-2 border-dashed border-gray-700 p-10">
-              <p className="my-5 mx-20 flex flex-col gap-3 text-center text-xl">
-                Click to upload<span className="text-gray-600">or</span> Drag
-                and drop image
-              </p>
-            </div>
+            {!disabled && (
+              <div className="cursor-pointer rounded-md border-2 border-dashed border-gray-700 p-10">
+                <p className="my-5 mx-20 flex flex-col gap-3 text-center text-xl">
+                  Click to upload<span className="text-gray-600">or</span> Drag
+                  and drop image
+                </p>
+              </div>
+            )}
           </FileUploader>
           <span className="text-xl text-gray-600">or</span>
           <div>
@@ -75,18 +87,23 @@ const Home: NextPage = () => {
               onChange={(e) =>
                 setImageURL(e.target.checkValidity() ? e.target.value : '')
               }
-              className="flex-1 rounded-md rounded-r-none border-[0.5px] border-gray-700 bg-transparent px-4 py-2 focus:outline-none"
+              className="flex-1 rounded-md rounded-r-none border-[0.5px] border-gray-700 bg-transparent px-4 py-2 focus:outline-none disabled:cursor-not-allowed"
               type="url"
               placeholder="Enter a image url"
+              disabled={disabled}
             />
             <button
               onClick={async () => {
+                setDisabled(true)
                 const image = await imageFromUrl(imageURL)
                 if (image) {
                   handleChange(image)
+                } else {
+                  setDisabled(false)
                 }
               }}
-              className="rounded-md rounded-l-none bg-blue-600 px-4 py-2 text-white"
+              className="rounded-md rounded-l-none bg-blue-600 px-4 py-2 text-white disabled:cursor-not-allowed"
+              disabled={disabled}
             >
               Upload
             </button>
