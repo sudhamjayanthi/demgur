@@ -1,5 +1,5 @@
-{ 
-  "name"  : "demgur",
+{
+  "name": "demgur",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -7,6 +7,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@charliewilco/gluejar": "^1.0.0",
     "next": "latest",
     "react": "^17.0.2",
     "react-confetti": "^6.0.1",

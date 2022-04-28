@@ -125,6 +125,11 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@charliewilco/gluejar@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@charliewilco/gluejar/-/gluejar-1.0.0.tgz#f228e8130d4e23401c119f32e27e5353c544c58e"
+  integrity sha512-tVvd/7VPK/3bzqYRxyrbZpG25Nf5jnJs5fUTEp00FKDa4Tk3nucju4pbmdX+h4TsZ9bJZc00iPCdoOiv6pOPOg==
+
 "@emotion/is-prop-valid@^1.1.0":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-1.1.2.tgz#34ad6e98e871aa6f7a20469b602911b8b11b3a95"

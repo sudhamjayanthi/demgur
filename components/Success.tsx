@@ -46,17 +46,17 @@ const Success = ({ cid, fileName }: { cid: any; fileName: any }) => {
                 console.log("using dweb gateway")
               } else {
                 console.log('response :', res)
-                setLoading('Failed to fetch image!')
+                setLoading('Failed to render image!')
               }
             }).catch((err) => {
               console.log('error occured', err)
-              setLoading('Failed to fetch image!')
+              setLoading('Failed to render image!')
             })
           }
         })
         .catch((err) => {
           console.log('error occured', err)
-          setLoading('Failed to fetch image!')
+          setLoading('Failed to render image!')
         })
     } catch (err) {
       console.log('error occured', err)
