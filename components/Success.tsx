@@ -9,9 +9,9 @@ import { useWindowSize } from 'react-use'
 import 'react-tippy/dist/tippy.css'
 import { Tooltip } from 'react-tippy'
 
-const copyToClipboard = (event : any) => {
+const copyToClipboard = (text : string) => {
   const el = document.createElement('textarea')
-  el.value = event.target.innerText.split(":")[1]
+  el.value = text
   el.setAttribute('readonly', '')
   el.style.position = 'absolute'
   el.style.left = '-9999px'
@@ -93,8 +93,8 @@ const Success = ({ cid, fileName }: { cid: any; fileName: any }) => {
           trigger="mouseenter "
           arrow={true}
         >
-          <p onClick={copyToClipboard} className="cursor-pointer text-gray-500">
-            CID : {cid}
+          <p onClick={() => copyToClipboard(`${cid + "/" + fileName}`)} className="cursor-pointer text-gray-500">
+            CID : {cid + "/" + fileName}
           </p>
         </Tooltip>
         <Link href={"/"}>
