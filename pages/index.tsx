@@ -97,7 +97,7 @@ const Home: NextPage = () => {
           </FileUploader>
           <span className="text-md opacity-30">
             💡 tip : you can paste image directly from clipboard using{' '}
-            <code className="rounded-md bg-gray-300/10 px-2 py-1 font-mono text-sm hover:text-green-600">
+            <code className="rounded-md bg-gray-300/10 px-2 py-1 font-mono text-sm hover:text-green-400">
               Ctrl + V
             </code>
           </span>
