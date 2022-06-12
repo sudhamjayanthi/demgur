@@ -54,9 +54,6 @@ const Home: NextPage = () => {
         handleFileUpload(e.clipboardData.files[0])
       }
     }}>
-      <Head>
-        <title>Demgur • Decentralised Image Hosting</title>
-      </Head>
 
       {typeof window !== 'undefined' ? (
         <Gluejar
