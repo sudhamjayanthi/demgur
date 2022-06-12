@@ -4,7 +4,7 @@ import Head from "next/head"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="bg-gray-900 text-gray-300 selec">
+    <div className="bg-gray-900 text-gray-300 w-full overflow-hidden">
       <Head>
         <title>Demgur • Decentralised Image Hosting</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

@@ -54,7 +54,7 @@ const Home: NextPage = () => {
     }}>
 
 
-      <nav className="p-6">
+      <nav className="p-6 text-center md:text-left">
         <h1 className="text-2xl font-semibold text-blue-400 cursor-pointer">de<span className="text-gray-200">mgur</span></h1>
       </nav>
       <main className="align-center flex flex-1 flex-col items-center justify-center">
@@ -77,14 +77,14 @@ const Home: NextPage = () => {
                 tabIndex={0}
                 className="cursor-pointer py-5 px-20 text-gray-600 rounded-md border-2 border-dashed border-gray-700 p-10  outline-none transition-all hover:border-blue-500  focus:border-blue-500"
               >
-                <p className="my-5 mx-20 flex flex-col gap-3 text-center text-xl ">
+                <p className="my-5 mx-15 flex flex-col gap-3 text-center text-xl ">
                   Click to upload<span className="text-gray-600">or</span> Drag
                   and drop image
                 </p>
               </div>
             )}
           </FileUploader>
-          <span className="text-md opacity-30 fixed bottom-4">
+          <span className="text-md opacity-30 fixed bottom-4 hidden lg:block">
             ⚡ Tip for Pro User : You can also paste image from clipboard right away!
           </span>
           <span className="text-xl text-gray-600">or</span>
@@ -118,7 +118,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </main>
-      <footer className="p-6 text-right text-gray-600">
+      <footer className="p-6 text-center md:text-right text-gray-600 ">
         by{' '}
         <a className="hover:text-green-400" href="https://sudham.tk">
           sudham
