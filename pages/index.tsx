@@ -1,13 +1,11 @@
 // next
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { useState } from 'react'
+import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 
 // libs
-import { FileUploader } from 'react-drag-drop-files'
 import { Web3Storage } from 'web3.storage'
-import { Gluejar } from '@charliewilco/gluejar'
+import { FileUploader } from 'react-drag-drop-files'
 
 // initiate web3 storage
 const client = new Web3Storage({ token: process.env.WEB3STORAGE_TOKEN })
@@ -55,15 +53,9 @@ const Home: NextPage = () => {
       }
     }}>
 
-      {typeof window !== 'undefined' ? (
-        <Gluejar
-          onError={(err) => console.log('error pasting file : ', err)}
-          container={document.body}
-          acceptedFiles={['image/png', 'image/jpeg', 'image/jpg']}
-        />
-      ) : null}
+
       <nav className="p-6">
-        <h1 className="text-2xl font-semibold text-blue-400">demgur</h1>
+        <h1 className="text-2xl font-semibold text-blue-400 cursor-pointer">de<span className="text-gray-200">mgur</span></h1>
       </nav>
       <main className="align-center flex flex-1 flex-col items-center justify-center">
         <h2 className="mb-14 text-2xl font-bold md:text-3xl md:font-bold lg:text-5xl lg:font-extrabold">
@@ -83,7 +75,7 @@ const Home: NextPage = () => {
             {!disabled && (
               <div
                 tabIndex={0}
-                className="cursor-pointer rounded-md border-2 border-dashed border-gray-700 p-10  outline-none transition-all hover:border-blue-500  focus:border-blue-500"
+                className="cursor-pointer py-5 px-20 text-gray-600 rounded-md border-2 border-dashed border-gray-700 p-10  outline-none transition-all hover:border-blue-500  focus:border-blue-500"
               >
                 <p className="my-5 mx-20 flex flex-col gap-3 text-center text-xl ">
                   Click to upload<span className="text-gray-600">or</span> Drag
@@ -92,11 +84,8 @@ const Home: NextPage = () => {
               </div>
             )}
           </FileUploader>
-          <span className="text-md opacity-30">
-            💡 tip : you can paste image directly from clipboard using{' '}
-            <code className="rounded-md bg-gray-300/10 px-2 py-1 font-mono text-sm hover:text-green-400">
-              Ctrl + V
-            </code>
+          <span className="text-md opacity-30 fixed bottom-4">
+            ⚡ Tip for Pro User : You can also paste image from clipboard right away!
           </span>
           <span className="text-xl text-gray-600">or</span>
           <div className="flex">
@@ -106,7 +95,7 @@ const Home: NextPage = () => {
               }
               className="flex-1 rounded-md rounded-r-none border-[0.5px] border-gray-600 bg-transparent px-4 py-2 outline-none placeholder:text-gray-600 disabled:cursor-not-allowed lg:transition-all lg:focus:px-6"
               type="url"
-              placeholder="enter a png or jpg url"
+              placeholder="Paste link to a image"
               disabled={disabled}
             />
             <button

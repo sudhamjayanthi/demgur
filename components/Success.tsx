@@ -3,13 +3,12 @@ import { useEffect, useState } from 'react'
 
 // confetti
 import Confetti from 'react-confetti'
-import { useWindowSize } from 'react-use'
 
 // tooltip
 import 'react-tippy/dist/tippy.css'
 import { Tooltip } from 'react-tippy'
 
-const copyToClipboard = (text : string) => {
+const copyToClipboard = (text: string) => {
   const el = document.createElement('textarea')
   el.value = text
   el.setAttribute('readonly', '')
@@ -23,9 +22,9 @@ const copyToClipboard = (text : string) => {
 }
 
 const Success = ({ cid, fileName }: { cid: any; fileName: any }) => {
-  const [imageSource, setImageSource] = useState('')
   const [loading, setLoading] = useState('')
-  const { width, height } = useWindowSize()
+  const [mounted, setMounted] = useState(false)
+  const [imageSource, setImageSource] = useState('')
 
   useEffect(() => {
     let ipfsGateway = `https://ipfs.io/ipfs/${cid}/${fileName}`
@@ -64,15 +63,13 @@ const Success = ({ cid, fileName }: { cid: any; fileName: any }) => {
     }
   }, [cid, fileName])
 
+  useEffect(() => {
+    setMounted(true)
+  })
+
   return (
     <>
-      <Confetti
-        width={width}
-        height={height}
-        numberOfPieces={400}
-        recycle={false}
-        gravity={0.3}
-      />
+      {mounted && <Confetti numberOfPieces={400} recycle={false} gravity={0.3} />}
       <div className="flex h-screen flex-col items-center justify-center gap-10">
         <h1 className="text-4xl font-semibold text-white">
           Uploaded to IPFS successfully! 🎉

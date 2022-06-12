@@ -1,10 +1,8 @@
 // next
 import type { NextPage } from 'next'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-const Success = dynamic(() => import('../../../components/Success'), {
-  ssr: false,
-})
+
+import Success from "../../../components/Success"
 
 const Image: NextPage = () => {
   const router = useRouter()
